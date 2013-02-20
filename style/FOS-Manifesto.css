@@ -134,6 +134,15 @@ div#futureimg {
     margin: 10px 0px;
 }
 
+div#cyclepastimg {
+    background-color: white;
+    height: 550px;
+    width: auto;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0px;
+}
+
 div.imgcred {
     padding-left: 20px;
     color: rgb(150, 150, 150);
@@ -144,5 +153,35 @@ div.imgcred {
 a {
     color: rgb(130, 130, 200);
 }
+
+div.benjimg {
+    background-color: white;
+    height: 400px;
+    width: auto;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0px;
+}
+
+
+header#maintitle table {
+    width: 100%;
+    padding-right: 20px;
+}
+
+div.titlecontrol {
+    height: 38px;
+    width: 38px;
+    border-radius: 10px;
+    font-size: 24pt;
+    vertical-align: middle;
+    text-align: center;
+    margin: 5px;
+    border: solid 4px yellow;
+    font-weight: bold;
+}
+
+
+
 
 

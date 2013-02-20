@@ -12,7 +12,13 @@
 <!-- Main Content { -->
 <div id=maincol>
 
-<header id=maintitle>Future of Scientific Discourse and Education</header>
+<header id=maintitle>
+    <table><tbody><tr>
+    <td><div id=maintitlediv>Future of Scientific Discourse and Education</div></td>
+    <td><div class=titlecontrol id=expander>+</div></td>
+    <td><div class=titlecontrol id=contractor>-</div></td>
+    </tr></tbody></table>
+</header>
 
 <article>
     <header>Forward</header>
@@ -22,8 +28,8 @@
 
     <section>
     <table><tbody><tr>
-        <td><div id=tree1img><img src="img/Tree1.jpg"/></div></td>
-        <td><div id=tree2img><img src="img/Tree2.jpg"/></div></td>
+        <td><div class=benjimg><img src="img/Tree1.jpg"/></div></td>
+        <td><div class=benjimg><img src="img/Tree2.jpg"/></div></td>
     </tr></tbody></table>
     <div class=imgcred>Images by Benjamin Smarr, 2013.</div>
     </section>
@@ -152,6 +158,7 @@
     <p>
     The <b>knowledge</b> cycle feeds into the <b>publication</b> cycle, which ultimately feeds into the <b>access</b> cycle. Humanistic departments may find relatable aspects. The figure below is an example by the <a href="http://www.unb.ca/">University of New Brunswick</a> with specific examples for interface "exchange" in science:
     </p>
+    <div id=cyclepastimg><img src="img/PastCycle.png"/></div>
     <p>
     <a href="http://www.wikipedia.org/">Wikipedia</a> is becoming an interface that allows more dynamic interactions with knowledge and real-time evaluation of the quality of the topic of interest as it is portrayed. This shortens the delay in the transition from knowledge to access-a step in the right direction. <a href="http://en.wikipedia.org/wiki/Peer-review">Peer-Review</a> is open to anyone, and fact-checking with primary literature is still encouraged, especially in the context of academia. David Jay observes that the current model in academia is beginning to parallel how we see information disseminated in non-academic discourse:
     </p>
@@ -467,10 +474,8 @@
 </div>
 <!-- Main Content } -->
 <!-- ******************************************************************** -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')
-</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.color.min.js"></script>
 <script src="js/FOS-Manifesto.js"></script>
 </body>
 </html>
