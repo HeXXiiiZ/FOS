@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<title>FOS Presentation</title>
+	
+	<!-- Required stylesheet -->
+	<link rel="stylesheet" href="js/deck.js/core/deck.core.css">
+	
+	<!-- Extension CSS files go here. Remove or add as needed. -->
+	<link rel="stylesheet" href="js/deck.js/extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="js/deck.js/extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="js/deck.js/extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="js/deck.js/extensions/status/deck.status.css">
+	<link rel="stylesheet" href="js/deck.js/extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="js/deck.js/extensions/scale/deck.scale.css">
+	
+  <link rel="stylesheet" href="js/deck.js/themes/style/neon.css">
+	<link rel="stylesheet" href="js/deck.js/themes/transition/fade.css">
+
+	<!-- Required Modernizr file -->
+	<script src="js/render/modernizr.custom.js"></script>
+
+
+    <!-- Style (s) { -->
+    <style>
+        body {
+            background-color : black;
+        }
+        #deck-in-a-box {
+            width  : 1100px;
+            overflow : hide;
+        }
+        .slide cite {
+            text-align : right;
+        }
+        .slide .small-note {
+            font-size : 0.7em;
+            line-height : 0.5em;
+        }
+        .slide b {
+            color : #aa7;
+        }
+        .slide .lildes {
+            font-size : 0.8em;
+            font-style : italic;
+        }
+        .slide div.form-red {
+            background-color : #300;
+            border : 1px solid #500;
+            border-radius : 10px;
+            margin: 10px;
+            overflow : hidden;
+        }
+        .slide div.form-red h4 {
+            background-color : #302;
+            padding-left : 10px;
+        }
+        .slide div.form-red p {
+            margin: 20px;
+        }
+        .slide div.form-red li {
+            margin-right: 20px;
+        }
+        .slide div.example-blue {
+            background-color : #003;
+            border : 8px dotted #203;
+            border-radius : 0px 30px 0px 30px;
+            margin : 10px;
+            padding : 10px;
+            overflow : hidden;
+            color : #ff9;
+            display : inline-block;
+        }
+        .slide table.mai-inter {
+            margin: 20px;
+        }
+        .slide table.mai-inter td {
+            padding: 10px;
+        }
+        .slide table#lcdec th {
+            border : 1px red solid;
+            font-size : 0.7em;
+            padding : 4px 5px;
+            vertical-align : middle;
+        }
+        .slide table#lcdec td {
+            border : 1px blue solid;
+            font-size : 0.65em;
+            padding : 3px 5px;
+        }
+        .slide table#lcdec tfoot td {
+            border : 1px green solid;
+            font-size : 0.65em;
+            padding : 3px 5px;
+            font-weight : bold;
+        }
+        .slide table.stab th {
+            border : 1px red solid;
+            font-size : 1em;
+            padding : 4px 5px;
+            vertical-align : middle;
+        }
+        .slide table.stab td {
+            border : 1px blue solid;
+            font-size : 1em;
+            padding : 3px 5px;
+        }
+
+        .deck-container .toc ol {
+            list-style-type : upper-roman;
+        }
+        .deck-container .toc ol li {
+            color : #f33;
+            padding-left : 15px;
+        }
+        .deck-container .toc ol li.hiToc {
+            background-color : #002;
+            border : 1px #444 solid;
+            border-radius : 10px;
+        }
+        .deck-container .toc ol li a {
+            color : #f33;
+            background-color: transparent;
+        }
+        .deck-container .toc ol li a:link {
+            color : #f33;
+        }
+        
+        .deck-container .toc ol li a:visited {
+            color : #f33;
+        }
+        
+        .deck-container article.org {
+            display : none;
+        }
+
+        .slide div.whimage {
+            background-color: white;
+            padding: 10px;
+            margin: 10px 30px;
+            float: right;
+            border-radius: 20px;
+            border: ridge 10px blue;
+            box-shadow: 15px 15px #004;
+        }
+
+        .slide div.whimage2 {
+            display: inline-block;
+            background-color: #e7e7e7;
+            padding: 10px;
+            margin: 10px 40px 40px 10px;
+            border-radius: 20px;
+            border: ridge 10px blue;
+            box-shadow: 15px 15px #004;
+        }
+        
+        .slide div.subbar {
+            margin : 5px;
+            padding : 5px;
+            background-color : transparent;
+            display : inline-block;
+        }
+
+        .slide span.subbar {
+            padding : 2px 8px;
+            font-size : 0.8em;
+            color : #d55;
+            border-radius : 2px;
+            border : 1px solid #555;
+            margin : 1px 5px;
+            background-color : #112;
+        }
+
+        .slide div.topbar {
+            margin : 10px 0px 10px 0px;
+            padding : 2px 20px;
+            width : auto;
+        }
+        
+        .slide div.topbar span.topbarHead {
+            padding : 2px 10px;
+            font-size : 0.9em;
+            font-style : italic;
+            border : 1px red solid;
+            color : #f99;
+            background-color : #300;
+        }
+
+        .slide div.topbar span.topbarHead a {
+            color : #f99;
+        }
+
+        .slide div.topbar span.topbarHead a:visited {
+            color : #f99;
+        }
+
+        .slide div.topbar span.topbarSub {
+            padding : 2px 20px;
+            font-size : 0.9em;
+            font-style : italic;
+            border : 1px red solid;
+        }
+
+        .slide div.topbar span.topbarSubHi {
+            padding : 2px 20px;
+            font-size : 0.9em;
+            font-style : italic;
+            border : 1px red solid;
+            background-color : #22b;
+        }
+    </style>
+
+    <!-- tail: Style --> 
+    <!-- } Style -->
+
+</head>
+<body>
+
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+<div class="deck-container deck-toc" id=deck-in-a-box>
+
+
+<section class="slide preToc">
+    <h1>
+      The Future of Science <br />
+      Kristina Kangas &amp; Chris Shaver <br />
+      University of California Berkeley
+    </h1>
+</section>
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- Problem (a) { -->
+<article class="org sec">Section One</article>
+
+<section class="slide">
+    <h2>Slide One</h2>
+    <h3>Slide One Stuff</h3>
+</section>
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<article class="org subsec">Section One, Subsection One</article>
+
+<section class="slide">
+</section>
+
+<!-- tail: Problem -->
+<!-- } Problem  -->
+
+<section class="slide">
+    <h1>Thank you!</h1>
+</section>
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- Additional Material (f) { -->
+<article class="org sec additional">Additional Material</article>
+
+<!-- tail: Additional Material -->
+<!-- } Additional Material -->
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<!-- Snippets (g) { -->
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current">.</span> /
+	<span class="deck-status-total">.</span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+<!-- } Snippets -->
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+</div>
+<!-- End slides. -->
+
+<!-- Includes (h) { -->
+<!-- Required JS files. -->
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/jquery/jquery.color.min.js"></script>
+<script src="js/visual/raphael-min.js"></script>
+<script src="js/lang/underscore-min.js"></script>
+<script src="js/lang/prelude-min.js"></script>
+
+<script src="js/render/display-latex2.user.js"></script>
+
+<script src="js/deck.js/core/deck.core.js"></script>
+<script src="js/deck.js/extensions/hash/deck.hash.js"></script>
+<script src="js/deck.js/extensions/menu/deck.menu.js"></script>
+<script src="js/deck.js/extensions/goto/deck.goto.js"></script>
+<script src="js/deck.js/extensions/status/deck.status.js"></script>
+<script src="js/deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="js/deck.js/extensions/scale/deck.scale.js"></script>
+<script src="js/deck.js/extensions/simplemath/deck.simplemath.js"></script>
+<script src="js/deck.js/extensions/smartsyntax/deck.smartsyntax.js"></script>
+
+<script src="js/biblio.data.js"></script>
+<script src="js/FOS-Presentation.js"></script>
+
+<!-- tail: JS Includes -->
+<!-- } JS Includes -->
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script> $(function() { $.deck('.slide'); }); </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
