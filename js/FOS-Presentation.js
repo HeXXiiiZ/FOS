@@ -201,8 +201,6 @@ function resolveReferences() {
     refReplace("span.btitle", function(ref) {
         return "<b>" + ref.title + "</b>";
     });
-
-
 }
 
 function buildBiblio() {

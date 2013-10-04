@@ -1,0 +1,56 @@
+
+================================================================================
+Outline of FOS Presentation
+================================================================================
+
+(A) Introduction, Who we are and why we are here.
+  (1) Who we are, Grad students in Science / Comp Sci.
+  (2) What we have been involved in.
+    (a) Public Perception of Science class.
+    (b) Open Access communities, BTPDF.
+    (c) Repeatable Data Science Course.
+  (3) Questions this has raised for us.
+    (a) How can feedback be used more effectively?
+    (b) How can personal success facilitate communal goals?
+
+(B) A Model of Current Science 
+  (1) Current structure of a research entity.
+    (a) Points of contact
+    (b) Sustainability
+  (2) Structure of research communities.
+    (a) Forms of communication
+    (b) Withholding information
+  (3) Ramifications of communication structure.
+    (a) Repetition of mistakes, lack of null results.
+    (b) High cost of failure, no intermediate products.
+    (c) Slow adaptation to new techniques and methodologies.
+    (d) Discursive drift, languages diverge and become incompatible.
+    (e) Hidden world of trade secrets forms, stat tricks, cheating
+  (4) The Unconscious of Scientific Communities
+  (5) How does this happen? What sustains it?
+
+(C) An Alternative Model for Science
+  (1) Open structure, the pieces are already here!
+    (a) Open access publication.
+    (b) Nano-publication.
+    (c) Horizontal communication.
+    (d) Contemporary Data-science.
+    ...
+
+(D) Why this is not being adopted: Psychoanalysis?
+  ** Here I am going to unleash some Zizek **
+  (1) It's not the tool, fool. (Tool fetishization)
+    (a) Defensive fetishistic disavowal of the real problem.
+    (b) Those in power want academics to busy themselves 'tooling around'. 
+  (2) Reward structures, professorship, ... a prisoners' dilemma 
+    (a) We cannot use our ideals about what people should need
+        to dismiss people's wants.
+    (b) Explicit rules / Implicit rules. 
+  (3) Fear of the Unconscious (My psychoanalytic proposition)
+      ** This is where I think a good argument can be made **
+      ** People fear the big Other seeing their non-idealistic reality ** 
+    
+
+
+
+
