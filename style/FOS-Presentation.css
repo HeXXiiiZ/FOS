@@ -1,0 +1,220 @@
+
+
+
+body {
+  background-color : black;
+}
+#deck-in-a-box {
+  width  : 1100px;
+  overflow : hide;
+}
+.slide cite {
+  text-align : right;
+}
+.slide .small-note {
+  font-size : 0.7em;
+  line-height : 0.5em;
+}
+.slide b {
+  color : #aa7;
+}
+.slide .lildes {
+  font-size : 0.8em;
+  font-style : italic;
+}
+.slide div.form-red {
+  background-color : #300;
+  border : 1px solid #500;
+  border-radius : 10px;
+  margin: 10px;
+  overflow : hidden;
+}
+.slide div.form-red h4 {
+  background-color : #302;
+  padding-left : 10px;
+}
+.slide div.form-red p {
+  margin: 20px;
+}
+.slide div.form-red li {
+  margin-right: 20px;
+}
+.slide div.example-blue {
+  background-color : #003;
+  border : 8px dotted #203;
+  border-radius : 0px 30px 0px 30px;
+  margin : 10px;
+  padding : 10px;
+  overflow : hidden;
+  color : #ff9;
+  display : inline-block;
+}
+.slide table.mai-inter {
+  margin: 20px;
+}
+.slide table.mai-inter td {
+  padding: 10px;
+}
+.slide table#lcdec th {
+  border : 1px red solid;
+  font-size : 0.7em;
+  padding : 4px 5px;
+  vertical-align : middle;
+}
+.slide table#lcdec td {
+  border : 1px blue solid;
+  font-size : 0.65em;
+  padding : 3px 5px;
+}
+.slide table#lcdec tfoot td {
+  border : 1px green solid;
+  font-size : 0.65em;
+  padding : 3px 5px;
+  font-weight : bold;
+}
+.slide table.stab th {
+  border : 1px red solid;
+  font-size : 1em;
+  padding : 4px 5px;
+  vertical-align : middle;
+}
+.slide table.stab td {
+  border : 1px blue solid;
+  font-size : 1em;
+  padding : 3px 5px;
+}
+
+.deck-container .toc ol {
+  list-style-type : upper-roman;
+}
+.deck-container .toc ol li {
+  color : #f33;
+  padding-left : 15px;
+}
+.deck-container .toc ol li.hiToc {
+  background-color : #002;
+  border : 1px #444 solid;
+  border-radius : 10px;
+}
+.deck-container .toc ol li a {
+  color : #f33;
+  background-color: transparent;
+}
+.deck-container .toc ol li a:link {
+  color : #f33;
+}
+
+.deck-container .toc ol li a:visited {
+  color : #f33;
+}
+
+.deck-container article.org {
+  display : none;
+}
+
+.slide div.whimage {
+  background-color: white;
+  padding: 10px;
+  margin: 10px 30px;
+  float: right;
+  border-radius: 20px;
+  border: ridge 10px blue;
+  box-shadow: 15px 15px #004;
+}
+
+.slide div.whimage2 {
+  display: inline-block;
+  background-color: #e7e7e7;
+  padding: 10px;
+  margin: 10px 40px 40px 10px;
+  border-radius: 20px;
+  border: ridge 10px blue;
+  box-shadow: 15px 15px #004;
+}
+
+.slide div.subbar {
+  margin : 5px;
+  padding : 5px;
+  background-color : transparent;
+  display : inline-block;
+}
+
+.slide span.subbar {
+  padding : 2px 8px;
+  font-size : 0.8em;
+  color : #d55;
+  border-radius : 2px;
+  border : 1px solid #555;
+  margin : 1px 5px;
+  background-color : #112;
+}
+
+.slide div.topbar {
+  margin : 10px 0px 10px 0px;
+  padding : 2px 20px;
+  width : auto;
+}
+
+.slide div.topbar span.topbarHead {
+  padding : 2px 10px;
+  font-size : 0.7em;
+  font-style : italic;
+  border : 1px red solid;
+  color : #f99;
+  background-color : #300;
+}
+
+.slide div.topbar span.topbarHead a {
+  color : #f99;
+}
+
+.slide div.topbar span.topbarHead a:visited {
+  color : #f99;
+}
+
+.slide div.topbar span.topbarSub {
+  padding : 2px 20px;
+  font-size : 0.7em;
+  font-style : italic;
+  border : 1px red solid;
+}
+
+.slide div.topbar span.topbarSubHi {
+  padding : 2px 20px;
+  font-size : 0.7em;
+  font-style : italic;
+  border : 1px red solid;
+  background-color : #22b;
+}
+
+.slide h1 {
+  font-size: 3.5em;
+}
+
+.slide h1 span.subh1 {
+  font-size: 0.7em;
+} 
+
+
+
+.slide .sci-model {
+  width  : 550px;
+  height : 670px;
+  float: left;
+  background-color: rgb(30, 0, 30);
+  margin-right: 20px;
+}
+
+.slide .sci-model-des {
+  margin  : 10px; 
+  padding : 5px;
+}
+
+
+
+
+
+
+
+
+

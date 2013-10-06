@@ -21,197 +21,15 @@
   <link rel="stylesheet" href="js/deck/themes/style/neon.css">
 	<link rel="stylesheet" href="js/deck/themes/transition/fade.css">
 
-	<!-- Required Modernizr file -->
+	<link rel="stylesheet" href="style/FOS-Presentation.css">
+	
+  <!-- Required Modernizr file -->
 	<script src="js/render/modernizr.custom.js"></script>
 
 
     <!-- Style (s) { -->
     <style>
-        body {
-            background-color : black;
-        }
-        #deck-in-a-box {
-            width  : 1100px;
-            overflow : hide;
-        }
-        .slide cite {
-            text-align : right;
-        }
-        .slide .small-note {
-            font-size : 0.7em;
-            line-height : 0.5em;
-        }
-        .slide b {
-            color : #aa7;
-        }
-        .slide .lildes {
-            font-size : 0.8em;
-            font-style : italic;
-        }
-        .slide div.form-red {
-            background-color : #300;
-            border : 1px solid #500;
-            border-radius : 10px;
-            margin: 10px;
-            overflow : hidden;
-        }
-        .slide div.form-red h4 {
-            background-color : #302;
-            padding-left : 10px;
-        }
-        .slide div.form-red p {
-            margin: 20px;
-        }
-        .slide div.form-red li {
-            margin-right: 20px;
-        }
-        .slide div.example-blue {
-            background-color : #003;
-            border : 8px dotted #203;
-            border-radius : 0px 30px 0px 30px;
-            margin : 10px;
-            padding : 10px;
-            overflow : hidden;
-            color : #ff9;
-            display : inline-block;
-        }
-        .slide table.mai-inter {
-            margin: 20px;
-        }
-        .slide table.mai-inter td {
-            padding: 10px;
-        }
-        .slide table#lcdec th {
-            border : 1px red solid;
-            font-size : 0.7em;
-            padding : 4px 5px;
-            vertical-align : middle;
-        }
-        .slide table#lcdec td {
-            border : 1px blue solid;
-            font-size : 0.65em;
-            padding : 3px 5px;
-        }
-        .slide table#lcdec tfoot td {
-            border : 1px green solid;
-            font-size : 0.65em;
-            padding : 3px 5px;
-            font-weight : bold;
-        }
-        .slide table.stab th {
-            border : 1px red solid;
-            font-size : 1em;
-            padding : 4px 5px;
-            vertical-align : middle;
-        }
-        .slide table.stab td {
-            border : 1px blue solid;
-            font-size : 1em;
-            padding : 3px 5px;
-        }
-
-        .deck-container .toc ol {
-            list-style-type : upper-roman;
-        }
-        .deck-container .toc ol li {
-            color : #f33;
-            padding-left : 15px;
-        }
-        .deck-container .toc ol li.hiToc {
-            background-color : #002;
-            border : 1px #444 solid;
-            border-radius : 10px;
-        }
-        .deck-container .toc ol li a {
-            color : #f33;
-            background-color: transparent;
-        }
-        .deck-container .toc ol li a:link {
-            color : #f33;
-        }
-        
-        .deck-container .toc ol li a:visited {
-            color : #f33;
-        }
-        
-        .deck-container article.org {
-            display : none;
-        }
-
-        .slide div.whimage {
-            background-color: white;
-            padding: 10px;
-            margin: 10px 30px;
-            float: right;
-            border-radius: 20px;
-            border: ridge 10px blue;
-            box-shadow: 15px 15px #004;
-        }
-
-        .slide div.whimage2 {
-            display: inline-block;
-            background-color: #e7e7e7;
-            padding: 10px;
-            margin: 10px 40px 40px 10px;
-            border-radius: 20px;
-            border: ridge 10px blue;
-            box-shadow: 15px 15px #004;
-        }
-        
-        .slide div.subbar {
-            margin : 5px;
-            padding : 5px;
-            background-color : transparent;
-            display : inline-block;
-        }
-
-        .slide span.subbar {
-            padding : 2px 8px;
-            font-size : 0.8em;
-            color : #d55;
-            border-radius : 2px;
-            border : 1px solid #555;
-            margin : 1px 5px;
-            background-color : #112;
-        }
-
-        .slide div.topbar {
-            margin : 10px 0px 10px 0px;
-            padding : 2px 20px;
-            width : auto;
-        }
-        
-        .slide div.topbar span.topbarHead {
-            padding : 2px 10px;
-            font-size : 0.9em;
-            font-style : italic;
-            border : 1px red solid;
-            color : #f99;
-            background-color : #300;
-        }
-
-        .slide div.topbar span.topbarHead a {
-            color : #f99;
-        }
-
-        .slide div.topbar span.topbarHead a:visited {
-            color : #f99;
-        }
-
-        .slide div.topbar span.topbarSub {
-            padding : 2px 20px;
-            font-size : 0.9em;
-            font-style : italic;
-            border : 1px red solid;
-        }
-
-        .slide div.topbar span.topbarSubHi {
-            padding : 2px 20px;
-            font-size : 0.9em;
-            font-style : italic;
-            border : 1px red solid;
-            background-color : #22b;
-        }
+    // Local Style 
     </style>
 
     <!-- tail: Style --> 
@@ -226,27 +44,106 @@
 
 
 <section class="slide preToc">
-    <h1>
-      The Future of Science <br />
+  <h1>The Future of Science <br />
+    <span class="subh1"> 
       Kristina Kangas &amp; Chris Shaver <br />
       University of California Berkeley
-    </h1>
+    </span>
+  </h1>
 </section>
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-<!-- Problem (a) { -->
-<article class="org sec">Section One</article>
+
+<article class="org sec">Who We Are. Why We Are Here.</article>
 
 <section class="slide">
-    <h2>Slide One</h2>
-    <h3>Slide One Stuff</h3>
+    <h2>Who We Are</h2>
+    <h3>Graduate Student Researchers</h3>
+</section>
+
+<article class="org subsec">Communities</article>
+
+<section class="slide">
+    <h2>Who We Are</h2>
+</section>
+
+<article class="org subsec">Questions Raised</article>
+
+<section class="slide">
+    <h2>Who We Are</h2>
 </section>
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-<article class="org subsec">Section One, Subsection One</article>
+<article class="org sec">A Model of Research</article>
+
+<article class="org subsec">Research Entities</article>
+
+<section class="slide">
+  <div class="sci-model" id="sci-model-1"></div>
+</section>
+
+<article class="org subsec">Research Communities</article>
+
+<section class="slide">
+    <h2>Who We Are</h2>
+</section>
+
+<article class="org subsec">Ramifications of Structure</article>
+
+<section class="slide">
+    <h2>Who We Are</h2>
+</section>
+
+<article class="org subsec">The Unconscious</article>
+
+<section class="slide">
+    <h2>Who We Are</h2>
+</section>
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<article class="org sec">An Alternative Model</article>
+
+<article class="org subsec">Open Structure</article>
+
+<section class="slide">
+</section>
+
+<article class="org subsec">Open Communites</article>
+
+<section class="slide">
+</section>
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+<article class="org sec">Why is this not being adopted?</article>
+
+<article class="org subsec">Tool Fetishization</article>
+
+<section class="slide">
+</section>
+
+<article class="org subsec">Reward Structures</article>
+
+<section class="slide">
+</section>
+
+<article class="org subsec">Fear of the Unconscious</article>
+
+<section class="slide">
+</section>
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+
 
 <section class="slide">
 </section>
@@ -262,8 +159,7 @@
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- Additional Material (f) { -->
-<article class="org sec additional">Additional Material</article>
-
+<!-- <article class="org sec additional">Additional Material</article> -->
 <!-- tail: Additional Material -->
 <!-- } Additional Material -->
 
@@ -313,6 +209,7 @@
 <script src="js/visual/raphael-min.js"></script>
 <script src="js/lang/underscore-min.js"></script>
 <script src="js/lang/prelude-min.js"></script>
+<script src="js/shaverUtil.js"></script>
 
 <script src="js/render/display-latex2.user.js"></script>
 
@@ -333,7 +230,7 @@
 <!-- } JS Includes -->
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
-<script> $(function() { $.deck('.slide'); }); </script>
+<script> $(function() { $.deck('.slide'); drawing(); }); </script>
 </body>
 </html>
 
