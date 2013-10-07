@@ -259,89 +259,57 @@ PP.last(str.doc.slides).elem
  */
 
 
-function getElementCenter(elem) {
-  var bb = elem.getBBox();
-  return {
-    'x': bb.x + 0.5*bb.width, 
-    'y': bb.y + 0.5*bb.height  
-  };
-}
 
 
 function drawing() {
-  var paper = Raphael('sci-model-1', 550, 670);
-  var sciModel = makeSciModel(paper);
-  var communlets = makeClassicCom(paper, sciModel);  
+  var paper = Raphael('sci-model-1', 350, 600);
+  var sciModel = SciMod.makeSciModel(paper, 0);
+  var communlets = SciMod.makeClassicCom(paper, sciModel);  
+
+  var paper2 = Raphael('sci-model-2', 350, 600);
+  var sciModel2a = SciMod.makeSciModel(paper2, 0);
+  var sciModel2b = SciMod.makeSciModel(paper2, 1);
+  var interactlets = SciMod.makeClassicInter(paper2, sciModel2a);
 }
 
-function makeClassicCom(paper, model) {
-  makeCom(paper, model, 'Proposal', "Funding");
-  makeCom(paper, model, 'Writing', "Peer-Review");
-  makeCom(paper, model, 'Publication', "Popular Media");
-}
 
+var SciMod = (function() { 
+  var boxHeight   = 35;
+  var boxWidth    = 130;
+  var boxGap      = 35;
+  var boxXpos     = 10;
+  var nSep        = 50;
 
-function makeCom(paper, model, key, comLabel) {
-  var cboxHeight = 35;
-  var cboxWidth  = 120;
-  var cboxDist   = 150;
-  var cboxHeightH = 0.5*cboxHeight;
+  var cboxHeight  = 35;
+  var cboxWidth   = 120;
+  var cboxDist    = 150;
 
-  var cjoin = model.arrows[model.stageIndex[key]].center;
-  cjoin.y -= 3;
-  var cnode = paper.rect(cjoin.x + cboxDist, cjoin.y - cboxHeightH, cboxWidth, cboxHeight, 5);
-  cnode.attr({ 'fill': '#ff0000' });
+  var intboxWidth = 200;
 
-  var cent = getElementCenter(cnode); 
-  var label = paper.text(cent.x, cent.y, comLabel);
-  label.attr({
-    'font-size' : '16pt',
-    'fill'      : '#8fff8f',
-  });
-
-  var carr  = paper.path([ 'M', cjoin.x - 70, cjoin.y, 'L', cjoin.x + cboxDist - 10, cjoin.y ]);
-  carr.attr({
-    'stroke'       : '#ff1111',
-    'stroke-width' : '2px',
-    'stroke-linecap' : 'round'
-  });
-
-}
-
-function makeSciModel(paper) {
-  var boxHeight = 50;
-  var boxWidth  = 150;
-  var boxGap    = 30;
-  var boxXpos   = 10;
   var stages = [
     'Background', 'Synthesis', 'Proposal', 'Experiment',
     'Analysis', 'Writing', 'Publication', 'Dissemination'
   ];
 
-  var pos = 10;
-  var stageNodes = PP.map(function(el) {
-    var rect = paper.rect(boxXpos, pos, boxWidth, boxHeight, 10);
-    rect.attr({ 'fill': '#10008f' });
+  function getElCenter(elem) {
+    var bb = elem.getBBox();
+    return { 'x': bb.x + 0.5*bb.width, 'y': bb.y + 0.5*bb.height };
+  }
 
-    var cent = getElementCenter(rect); 
-    var label = paper.text(cent.x, cent.y, el);
-    label.attr({
-      'font-size' : '16pt',
-      'fill'      : '#8fff8f',
-    });
+  function rectCent(paper, x, y, w, h, r) {
+    return paper.rect(x - 0.5*w, y - 0.5*h, w, h, r); 
+  }
 
-    pos += boxHeight + boxGap;
-    return { 'label': el, 'node': rect, 'center': cent };  
-  }, stages);
+  function makeSqNode(paper, x, y, ltext) {
+    var rect = rectCent(paper, x, y, boxWidth, boxHeight, 10).attr({ 'fill': '#10008f' });
+    var label = paper.text(x, y, ltext).attr({ 'font-size': '16pt', 'fill': '#8fff8f' });
+    return { 'label': ltext, 'node': rect, 'center': {'x': x, 'y': y} };   
+  } 
 
-  var stageArrows = PP.map(function(el) {
-    var boxHeightH = boxHeight/2;
-    var cent = el.center;
-    var ays = cent.y - boxGap - boxHeightH;
-    var aye = cent.y - boxHeightH - 6;
-    var aym = ays + 0.5*(aye - ays);
-    var acent = { 'x': cent.x, 'y': aym };
-    var arr  = paper.path([ 'M', cent.x, ays, 'L', cent.x, aye ]);
+  function makeSqArrows(paper, xs, ys, xe, ye) {
+    var ym = ys + 0.5*(ye - ys);
+    var acent = { 'x': xs + 0.5*(xe - xs), 'y': ys + 0.5*(ye - ys) };
+    var arr  = paper.path([ 'M', xs, ys, 'L', xe, ye ]);
     arr.attr({
       'stroke'       : '#ffffff',
       'stroke-width' : '5px',
@@ -349,13 +317,92 @@ function makeSciModel(paper) {
     });
 
     return { 'arr': arr, 'center': acent };
-  }, PP.tail(stageNodes));
+  }
 
-  var stageIndex = {}, k = 0;
-  PP.each(function(el) { stageIndex[el] = k; k += 1; }, stages);
+  function makeSciModel(paper, n) {
+    var pos = 10 + 0.5*boxHeight;
+    var xpos = boxXpos + 0.5*boxWidth + n*(nSep + boxWidth);
+    var stageNodes = PP.map(function(el) { 
+      sq = makeSqNode(paper, xpos, pos, el)
+      pos += boxGap + boxHeight; 
+      return sq;
+    }, stages);
 
-  return { 'stageIndex': stageIndex, 'nodes': stageNodes, 'arrows': stageArrows };
-}
+    var stageArrows = PP.map(function(el) {
+      var ays = el.center.y - boxGap - 0.5*boxHeight;
+      var aye = el.center.y - 0.5*boxHeight - 6;
+      return makeSqArrows(paper, el.center.x, ays, el.center.x, aye); 
+    }, PP.tail(stageNodes));
+
+    var stageIndex = {}, k = 0;
+    PP.each(function(el) { stageIndex[el] = k; k += 1; }, stages);
+
+    return { 'stageIndex': stageIndex, 'nodes': stageNodes, 'arrows': stageArrows };
+  }
+
+  function makeCom(paper, x, y, comLabel) {
+    var cx = x + cboxDist, cy = y - 3;
+    var cnode = rectCent(paper, cx, cy, cboxWidth, cboxHeight, 5);
+    cnode.attr({ 'fill': '#ff0000' });
+
+    var label = paper.text(cx, cy, comLabel);
+    label.attr({ 'font-size': '16pt', 'fill': '#8fff8f' });
+
+    var carr  = paper.path([ 'M', x - 70, cy, 'L', cx - 0.5*cboxWidth - 10, cy ]);
+    carr.attr({
+      'stroke'       : '#ff1111',
+      'stroke-width' : '2px',
+      'stroke-linecap' : 'round'
+    });
+
+    return { };
+  }
+
+  function makeClassicCom(paper, model) {
+    var cjoin = model.arrows[model.stageIndex['Proposal']].center;
+    makeCom(paper, cjoin.x, cjoin.y, "Funding");
+    
+    cjoin = model.arrows[model.stageIndex['Writing']].center;
+    makeCom(paper, cjoin.x, cjoin.y, "Peer-Review");
+    
+    cjoin = model.arrows[model.stageIndex['Publication']].center;
+    makeCom(paper, cjoin.x, cjoin.y, "Popular Media");
+  }
+
+  function makeClassicInter(paper, model) {
+    var bx = boxXpos + boxWidth + 0.5*nSep;
+    var cSyn = model.nodes[model.stageIndex['Synthesis']].center;
+    var bSyn = rectCent(paper, bx, cSyn.y, intboxWidth, 40, 5);
+    bSyn.attr({ 'fill': '#8f0040' });
+    bSyn.rotate(-90); 
+
+    var bSynLabel = paper.text(bx, cSyn.y, "Email / Informal");
+    bSynLabel.attr({ 'font-size': '16pt', 'fill': '#8fff8f' });
+    bSynLabel.rotate(-90);
+    
+    var cAna = model.nodes[model.stageIndex['Analysis']].center;
+    var bAna = rectCent(paper, bx, cAna.y, 10, intboxWidth, 5);
+    bAna.attr({ 'fill': '#fff0ff' });
+    
+    var cPub = model.nodes[model.stageIndex['Publication']].center;
+    var cDis = model.nodes[model.stageIndex['Dissemination']].center;
+  }
+
+
+  return {
+    'makeSciModel' : makeSciModel,
+    'makeClassicCom' : makeClassicCom,
+    'makeClassicInter' : makeClassicInter
+  };
+
+})();
+
+
+
+
+
+
+
 
 
 
