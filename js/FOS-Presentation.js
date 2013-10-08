@@ -270,6 +270,15 @@ function drawing() {
   var sciModel2a = SciMod.makeSciModel(paper2, 0);
   var sciModel2b = SciMod.makeSciModel(paper2, 1);
   var interactlets = SciMod.makeClassicInter(paper2, sciModel2a);
+  
+  var paper3 = Raphael('sci-model-3', 350, 600);
+  var sciModel3 = SciMod.makeSciModel(paper3, 0);
+  var nanopubs = SciMod.makeNanoPubs(paper3, sciModel3);
+
+  var paper4 = Raphael('sci-model-4', 350, 600);
+  var sciModel4a = SciMod.makeSciModel(paper4, 0);
+  var sciModel4b = SciMod.makeSciModel(paper4, 1);
+  var interactions = SciMod.makeAltInter(paper4, sciModel4a);
 }
 
 
@@ -284,7 +293,7 @@ var SciMod = (function() {
   var cboxWidth   = 120;
   var cboxDist    = 150;
 
-  var intboxWidth = 200;
+  var intboxWidth = 180;
 
   var stages = [
     'Background', 'Synthesis', 'Proposal', 'Experiment',
@@ -355,24 +364,45 @@ var SciMod = (function() {
       'stroke-linecap' : 'round'
     });
 
-    return { };
+    return { 'node': cnode, 'arrow': carr };
   }
 
+  function makeNanoPub(paper, x, y, comLabel) {
+    var cx = x + cboxDist, cy = y;
+    var cnode = rectCent(paper, cx, cy, cboxWidth, cboxHeight, 5);
+    cnode.attr({ 'fill': '#af8080' });
+
+    var label = paper.text(cx, cy, comLabel);
+    label.attr({ 'font-size': '14pt', 'fill': '#40ff90' });
+
+    var carr  = paper.path([ 'M', x + 10, cy, 'L', cx - 0.5*cboxWidth - 10, cy ]);
+    carr.attr({
+      'stroke'       : '#ff1111',
+      'stroke-width' : '4px',
+      'stroke-linecap' : 'round'
+    });
+
+    return { 'node': cnode, 'arrow': carr };
+  }
+
+
   function makeClassicCom(paper, model) {
-    var cjoin = model.arrows[model.stageIndex['Proposal']].center;
-    makeCom(paper, cjoin.x, cjoin.y, "Funding");
-    
-    cjoin = model.arrows[model.stageIndex['Writing']].center;
-    makeCom(paper, cjoin.x, cjoin.y, "Peer-Review");
-    
-    cjoin = model.arrows[model.stageIndex['Publication']].center;
-    makeCom(paper, cjoin.x, cjoin.y, "Popular Media");
+    var comStages = [
+      { 'stage': 'Proposal',    'form': "Funding" },
+      { 'stage': 'Writing',     'form': "Peer-Review" },
+      { 'stage': 'Publication', 'form': "Popular Media" }
+    ];
+
+    PP.map(function(el) {
+      var cjoin = model.arrows[model.stageIndex[el.stage]].center;
+      makeCom(paper, cjoin.x, cjoin.y, el.form);
+    }, comStages);
   }
 
   function makeClassicInter(paper, model) {
     var bx = boxXpos + boxWidth + 0.5*nSep;
     var cSyn = model.nodes[model.stageIndex['Synthesis']].center;
-    var bSyn = rectCent(paper, bx, cSyn.y, intboxWidth, 40, 5);
+    var bSyn = rectCent(paper, bx, cSyn.y, intboxWidth, 35, 15);
     bSyn.attr({ 'fill': '#8f0040' });
     bSyn.rotate(-90); 
 
@@ -381,18 +411,65 @@ var SciMod = (function() {
     bSynLabel.rotate(-90);
     
     var cAna = model.nodes[model.stageIndex['Analysis']].center;
-    var bAna = rectCent(paper, bx, cAna.y, 10, intboxWidth, 5);
+    var bAna = rectCent(paper, bx, cAna.y, 10, intboxWidth + 20, 5);
     bAna.attr({ 'fill': '#fff0ff' });
     
     var cPub = model.nodes[model.stageIndex['Publication']].center;
+    var bPub = rectCent(paper, bx, cPub.y, 30, 30, 5);
+    bPub.attr({ 'fill': '#8f0040' });
+    
+    var bPubLabel = paper.text(bx, cPub.y, "A");
+    bPubLabel.attr({ 'font-size': '16pt', 'fill': '#8fff8f' });
+
     var cDis = model.nodes[model.stageIndex['Dissemination']].center;
+    var bDis = rectCent(paper, bx, cDis.y, 30, 30, 5);
+    bDis.attr({ 'fill': '#8f0040' });
+
+    var bDisLabel = paper.text(bx, cDis.y, "B");
+    bDisLabel.attr({ 'font-size': '16pt', 'fill': '#8fff8f' });
+  }
+
+
+  function makeNanoPubs(paper, model) {
+    var nanoPubStages = [
+      { 'stage': 'Proposal',    'form': "Expr Design" }, 
+      { 'stage': 'Experiment',  'form': "Data Set" }, 
+      { 'stage': 'Analysis',    'form': "Workflow" }, 
+      { 'stage': 'Writing',     'form': "Formal Paper" }, 
+      { 'stage': 'Publication', 'form': "Presentation" } 
+    ];
+
+    PP.map(function(el) {
+      var cjoin = model.arrows[model.stageIndex[el.stage]].center;
+      return makeNanoPub(paper, cjoin.x, cjoin.y, el.form);
+    }, nanoPubStages);
+
+  }
+
+  function makeAltInter(paper, model) {
+    PP.map(function(el) {
+      var x = el.center.x, y = el.center.y;
+      var carr  = paper.path([ 'M', x + 20, y, 'L', x + boxWidth + nSep - 20, y ]);
+      carr.attr({
+        'stroke'       : '#ffffff',
+        'stroke-width' : '6px',
+        'stroke-linecap' : 'round',
+        'arrow-start' : 'classic-medium-medium', 
+        'arrow-end'   : 'classic-medium-medium'
+      });
+
+      return carr;
+    }, model.arrows); 
+    
   }
 
 
   return {
-    'makeSciModel' : makeSciModel,
-    'makeClassicCom' : makeClassicCom,
-    'makeClassicInter' : makeClassicInter
+    'makeSciModel'     : makeSciModel,
+    'makeClassicCom'   : makeClassicCom,
+    'makeClassicInter' : makeClassicInter,
+    'makeAltInter'     : makeAltInter,
+    'makeNanoPubs'     : makeNanoPubs
   };
 
 })();
