@@ -143,7 +143,7 @@ function addTitles(struct) {
 function buildToc(struct, hidex) {
     var tocOl = $('<ol />');
     _.each(struct.doc.subs, function (el, dex) {
-        var tslide = el.tslide || PP.empty(el.slides) ? '#' : PP.first(el.slides).elem;
+        var tslide = el.tslide || (PP.empty(el.slides) ? '#' : PP.first(el.slides).elem);
         var anch = $('<a />', { 'class' : 'backlink' }).html(el.title).data('ref', tslide);
         var subbar = $('<div />', { 'class' : 'subbar' });
         _.each(el.subs, function (et) {
@@ -164,7 +164,7 @@ function buildToc(struct, hidex) {
 function buildTopbar(struct, hidex) {
     var topbar = $('<div />', {'class' : 'topbar'});
 
-    var tslide = struct.tslide || PP.empty(struct.slides) ? '#' : PP.first(struct.slides).elem;
+    var tslide = struct.tslide || (PP.empty(struct.slides) ? '#' : PP.first(struct.slides).elem);
     var anch = $('<a />', { 'class' : 'backlink' }).html(struct.title).data('ref', tslide);
     topbar.append($('<span />', { 'class' : 'topbarHead' }).append(anch));
 
@@ -185,33 +185,33 @@ function buildTopbar(struct, hidex) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function resolveReferences() {
-    $("span.ref").each(function() {
-        var nameMatch = this.innerHTML.match(/^(\w*)(?::\s*(.*))?$/);
-        this.innerHTML = "";
-        var name = nameMatch[1];
-        var link = nameMatch[2] ? refLink(name, nameMatch[2]) : refGenLink(name);
-        $(this).append(link).data('refkey', name).addClass('bib');
-    });
+  $("span.ref").each(function() {
+    var nameMatch = this.innerHTML.match(/^(\w*)(?::\s*(.*))?$/);
+    this.innerHTML = "";
+    var name = nameMatch[1];
+    var link = nameMatch[2] ? refLink(name, nameMatch[2]) : refGenLink(name);
+    $(this).append(link).data('refkey', name).addClass('bib');
+  });
 
-    $("span.whoswhen").filter(isReference).each(function () {
-        var name = this.innerHTML;
-        this.innerHTML = formPeopleTime(name);
-        $(this).data('refkey', name).addClass('bib');
-    });
+  $("span.whoswhen").filter(isReference).each(function () {
+    var name = this.innerHTML;
+    this.innerHTML = formPeopleTime(name);
+    $(this).data('refkey', name).addClass('bib');
+  });
 
-    refReplace("span.btitle", function(ref) {
-        return "<b>" + ref.title + "</b>";
-    });
+  refReplace("span.btitle", function(ref) {
+    return "<b>" + ref.title + "</b>";
+  });
 
 }
 
 function buildBiblio() {
-    var bibsSet = {};
-    $('.bib').each(function (dex, el) {
-        bibsSet[$(el).data('refkey')] = true;
-    });
+  var bibsSet = {};
+  $('.bib').each(function (dex, el) {
+    bibsSet[$(el).data('refkey')] = true;
+  });
 
-    var bibs = _.keys(bibsSet);
+  var bibs = _.keys(bibsSet);
 }
 
 
@@ -229,10 +229,10 @@ $(document).bind('deck.beforeInit', function() {
     PP.last(struct.doc.slides).elem.after(toc);
 
     _.each(struct.doc.subs, function (el, dex) {
-        var toc = buildToc(struct, dex);
-        if (el.tslide) el.tslide.append(toc);
-        else if (!PP.empty(el.slides)) PP.first(el.slides).elem.prepend(toc);
-        else ;
+//        var toc = buildToc(struct, dex);
+//        if (el.tslide) el.tslide.append(toc);
+//        else if (!PP.empty(el.slides)) PP.first(el.slides).elem.prepend(toc);
+//        else ;
         _.each(el.slides, function (et) { et.elem.prepend(buildTopbar(el)); });
         _.each(el.subs, function (et, ddex) {
             _.each(et.slides, function(en) { en.elem.prepend(buildTopbar(el, ddex)); });
@@ -246,17 +246,13 @@ $(document).bind('deck.beforeInit', function() {
 
 
 $(document).bind('deck.init', function() {
-    $('a.backlink').each(function(dex, el) {
-        var ell = $(el);
-        var dref = ell.data('ref');
-        ell.attr('href', '#' + (dref === '#' ? '' : dref.attr('id')));
-    });
+  $('a.backlink').each(function(dex, el) {
+    var ell = $(el);
+    var dref = ell.data('ref');
+    ell.attr('href', '#' + (dref === '#' ? '' : dref.attr('id')));
+  });
 });
 
-/*
-PP.last(str.doc.slides).elem
-.after($('<section />', { 'class': 'slide' }).append('<h2>New Slide</h2>'))
- */
 
 
 
