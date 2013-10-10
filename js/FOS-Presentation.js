@@ -221,26 +221,26 @@ function buildBiblio() {
 ////////////////////////////////////////////////////////////////////////////////
 
 $(document).bind('deck.beforeInit', function() {
-    buildStructure();
-    var struct = $.deck('getContainer').data('structure');
-    addTitles(struct);
+  buildStructure();
+  var struct = $.deck('getContainer').data('structure');
+  addTitles(struct);
 
-    var toc = buildToc(struct);
-    PP.last(struct.doc.slides).elem.after(toc);
+  var toc = buildToc(struct);
+  PP.last(struct.doc.slides).elem.after(toc);
 
-    _.each(struct.doc.subs, function (el, dex) {
-//        var toc = buildToc(struct, dex);
-//        if (el.tslide) el.tslide.append(toc);
-//        else if (!PP.empty(el.slides)) PP.first(el.slides).elem.prepend(toc);
-//        else ;
-        _.each(el.slides, function (et) { et.elem.prepend(buildTopbar(el)); });
-        _.each(el.subs, function (et, ddex) {
-            _.each(et.slides, function(en) { en.elem.prepend(buildTopbar(el, ddex)); });
-        });
+  _.each(struct.doc.subs, function (el, dex) {
+    //        var toc = buildToc(struct, dex);
+    //        if (el.tslide) el.tslide.append(toc);
+    //        else if (!PP.empty(el.slides)) PP.first(el.slides).elem.prepend(toc);
+    //        else ;
+    _.each(el.slides, function (et) { et.elem.prepend(buildTopbar(el)); });
+    _.each(el.subs, function (et, ddex) {
+      _.each(et.slides, function(en) { en.elem.prepend(buildTopbar(el, ddex)); });
     });
+  });
 
-    resolveReferences();
-    buildBiblio();
+  resolveReferences();
+  buildBiblio();
 });
 
 
@@ -348,10 +348,10 @@ var SciMod = (function() {
   function makeCom(paper, x, y, comLabel) {
     var cx = x + cboxDist, cy = y - 3;
     var cnode = rectCent(paper, cx, cy, cboxWidth, cboxHeight, 5);
-    cnode.attr({ 'fill': '#ff0000' });
+    cnode.attr({ 'fill': '#8f1010' });
 
     var label = paper.text(cx, cy, comLabel);
-    label.attr({ 'font-size': '16pt', 'fill': '#8fff8f' });
+    label.attr({ 'font-size': '16pt', 'fill': '#bfbfbf' });
 
     var carr  = paper.path([ 'M', x - 70, cy, 'L', cx - 0.5*cboxWidth - 10, cy ]);
     carr.attr({
@@ -366,10 +366,10 @@ var SciMod = (function() {
   function makeNanoPub(paper, x, y, comLabel) {
     var cx = x + cboxDist, cy = y;
     var cnode = rectCent(paper, cx, cy, cboxWidth, cboxHeight, 5);
-    cnode.attr({ 'fill': '#af8080' });
+    cnode.attr({ 'fill': '#7f8080' });
 
     var label = paper.text(cx, cy, comLabel);
-    label.attr({ 'font-size': '14pt', 'fill': '#40ff90' });
+    label.attr({ 'font-size': '14pt', 'fill': '#40ffc0' });
 
     var carr  = paper.path([ 'M', x + 10, cy, 'L', cx - 0.5*cboxWidth - 10, cy ]);
     carr.attr({
